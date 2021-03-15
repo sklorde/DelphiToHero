@@ -58,7 +58,8 @@
         <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
         <SanitizedProjectName>DelphiToHero</SanitizedProjectName>
-    <DCC_UnitSearchPath>modules\.dcp;modules\.dcu;$(DCC_UnitSearchPath);modules;modules\router4delphi\Samples\FMX\Demo;modules\router4delphi\Samples\FMX\Demo\Views\Components;modules\router4delphi\Samples\FMX\Demo\Views\Layouts;modules\router4delphi\Samples\FMX\Demo\Views\Pages;modules\router4delphi\Samples\FMX\Demo\Views;modules\router4delphi\Samples\FMX\Demo\Views\Routers;modules\router4delphi\Samples\FMX\SimpleDemo;modules\router4delphi\Samples\VCL;modules\router4delphi\Samples\VCL\pages;modules\router4delphi\src</DCC_UnitSearchPath></PropertyGroup>
+        <DCC_UnitSearchPath>modules\.dcp;modules\.dcu;modules;modules\router4delphi\Samples\FMX\Demo;modules\router4delphi\Samples\FMX\Demo\Views\Components;modules\router4delphi\Samples\FMX\Demo\Views\Layouts;modules\router4delphi\Samples\FMX\Demo\Views\Pages;modules\router4delphi\Samples\FMX\Demo\Views;modules\router4delphi\Samples\FMX\Demo\Views\Routers;modules\router4delphi\Samples\FMX\SimpleDemo;modules\router4delphi\Samples\VCL;modules\router4delphi\Samples\VCL\pages;modules\router4delphi\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DataSnapServerMidas;DBXDb2Driver;DBXInterBaseDriver;ZComponent;vclactnband;ZCore;vclFireDAC;emsclientfiredac;DataSnapFireDAC;svnui;tethering;FireDACADSDriver;DBXMSSQLDriver;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;PngComponentsD;vcltouch;vcldb;bindcompfmx;svn;Intraweb;DBXOracleDriver;inetdb;CEF4Delphi;ACBr_Diversos;FmxTeeUI;emsedge;FireDACIBDriver;fmx;fmxdae;vclib;FireDACDBXDriver;dbexpress;IndyCore;vclx;ZParseSql;dsnap;DataSnapCommon;emsclient;FireDACCommon;RESTBackendComponents;DataSnapConnectors;VCLRESTComponents;soapserver;vclie;bindengine;DBXMySQLDriver;FireDACOracleDriver;CloudService;FireDACMySQLDriver;DBXFirebirdDriver;FireDACCommonODBC;FireDACCommonDriver;DataSnapClient;inet;bindcompdbx;IndyIPCommon;vcl;DBXSybaseASEDriver;IndyIPServer;IndySystem;FireDACDb2Driver;dsnapcon;DCPdelphi2009;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;ZDbc;TeeDB;FireDAC;ACBr_SPEDImportar;ACBr_SPED;emshosting;ACBr_Comum;FireDACSqliteDriver;FireDACPgDriver;ibmonitor;FireDACASADriver;FireDACTDataDriver;DBXOdbcDriver;FMXTee;soaprtl;DbxCommonDriver;ibxpress;Tee;DataSnapServer;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;vclwinx;ibxbindings;rtl;emsserverresource;DbxClientDriver;FireDACDSDriver;DBXSybaseASADriver;CustomIPTransport;vcldsnap;bindcomp;appanalytics;ZPlain;DBXInformixDriver;IndyIPClient;bindcompvcl;TeeUI;RtmRxCtl260;dbxcds;VclSmp;adortl;FireDACODBCDriver;RtmRxDB260;DataSnapIndy10ServerTransport;dsnapxml;DataSnapProviderClient;dbrtl;inetdbxpress;FireDACMongoDBDriver;IndyProtocols;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
@@ -83,6 +84,8 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -99,9 +102,19 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="src\view\DelphiToHero.View.Main.pas">
-            <Form>Form1</Form>
+            <Form>frmPrincipal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\view\styles\DelphiToHero.View.Styles.Colors.pas"/>
+        <DCCReference Include="src\view\pages\DelphiToHero.View.Pages.Principal.pas">
+            <Form>pagePrincipal</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\view\pages\DelphiToHero.View.Pages.Usuarios.pas">
+            <Form>pageUsuarios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\view\routers\DelphiToHero.View.Routers.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -122,6 +135,11 @@
                 <Source>
                     <Source Name="MainSource">DelphiToHero.dpr</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\DataExplorerDBXPluginEnt260.bpl">DBExpress Enterprise Data Explorer Integration</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k260.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp260.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
                 <DeployFile LocalName="Win32\Debug\DelphiToHero.exe" Configuration="Debug" Class="ProjectOutput">
