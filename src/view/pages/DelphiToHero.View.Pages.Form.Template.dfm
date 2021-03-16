@@ -67,7 +67,7 @@ object frmTemplate: TfrmTemplate
           Height = 73
           Cursor = crHandPoint
           Align = alRight
-          Caption = 'Relat'#243'rios'
+          Caption = 'RELAT'#211'RIOS'
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
