@@ -12,6 +12,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  WindowState = wsMaximized
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -24,10 +25,6 @@ object frmPrincipal: TfrmPrincipal
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 264
-    ExplicitTop = 128
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object pnMenu: TPanel
       Left = 0
       Top = 0
@@ -37,7 +34,6 @@ object frmPrincipal: TfrmPrincipal
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 0
-      ExplicitHeight = 504
       object btnUsuarios: TSpeedButton
         Left = 0
         Top = 170
@@ -69,7 +65,6 @@ object frmPrincipal: TfrmPrincipal
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 0
-        ExplicitWidth = 94
       end
     end
     object pnFull: TPanel
@@ -81,10 +76,6 @@ object frmPrincipal: TfrmPrincipal
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 1
-      ExplicitLeft = 328
-      ExplicitTop = 184
-      ExplicitWidth = 185
-      ExplicitHeight = 41
       object pnTop: TPanel
         Left = 0
         Top = 0
@@ -94,7 +85,6 @@ object frmPrincipal: TfrmPrincipal
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 0
-        ExplicitWidth = 652
       end
       object pnPrincipal: TPanel
         Left = 0
@@ -105,10 +95,6 @@ object frmPrincipal: TfrmPrincipal
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 1
-        ExplicitLeft = 464
-        ExplicitTop = 304
-        ExplicitWidth = 185
-        ExplicitHeight = 41
       end
     end
   end
