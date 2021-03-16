@@ -1,7 +1,14 @@
+<h1 align="center">
+  Delphi To Hero
+  <br>
+</h1>
+
+<h4 align="center">A simple desktop app with MDI.</h4>
+
+<h5 align="center">Made using MDI (Multiple Document Interface), memory management, and navigation by routes with modern design made only with VCL.</h4>
+
 ![Delphi](https://img.shields.io/badge/Made%20with-Delphi-red?style=for-the-badge&logo=Delphi&logoColor=red&logoWidth=15)
 
-## Delphi To Hero
-A project made using MDI (Multiple Document Interface), memory management, and navigation by routes with modern design made only with VCL.
 
 ## Key Features
 * Multiple Document Interface
