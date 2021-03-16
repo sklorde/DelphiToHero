@@ -9,6 +9,13 @@
 
 ![Delphi](https://img.shields.io/badge/Made%20with-Delphi-red?style=for-the-badge&logo=Delphi&logoColor=red&logoWidth=15)
 
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#how-to-install">How to Install</a> •
+  <a href="#download">Download</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#license">License</a>
+</p>
 
 ## Key Features
 * Multiple Document Interface
