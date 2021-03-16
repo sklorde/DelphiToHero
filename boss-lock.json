@@ -2,9 +2,17 @@
 	"hash": "d41d8cd98f00b204e9800998ecf8427e",
 	"updated": "2021-03-15T10:43:22.2783633-03:00",
 	"installedModules": {
+		"https://github.com/amikey/pngdelphi": {
+			"name": "pngdelphi",
+			"version": "master",
+			"hash": "f06ed3e5e00c630e1c09fc0644c4e74b",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
 		"https://github.com/bittencourtthulio/router4delphi": {
 			"name": "router4delphi",
-			"version": "master",
+			"version": "1.0.1",
 			"hash": "4c5d2b832b6b2ab4d47a5180ec3002fb",
 			"artifacts": {},
 			"failed": false,
