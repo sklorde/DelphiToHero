@@ -12,19 +12,15 @@ uses
   Vcl.Controls,
   Vcl.Forms,
   Vcl.Dialogs,
-  Vcl.StdCtrls,
-  Vcl.ExtCtrls,
-  Router4D.Interfaces;
+  DelphiToHero.View.Pages.Form.Template,
+  Vcl.ExtCtrls, Vcl.StdCtrls;
 
 type
-  TPageUsuarios = class(TForm, iRouter4DComponent)
-    Panel1: TPanel;
-    lblTitulo: TLabel;
+  TpageUsuarios = class(TfrmTemplate)
   private
     { Private declarations }
   public
-    function Render: TForm;
-    procedure UnRender;
+    { Public declarations }
   end;
 
 var
@@ -33,17 +29,5 @@ var
 implementation
 
 {$R *.dfm}
-
-{ TpageUsuarios }
-
-function TpageUsuarios.Render: TForm;
-begin
-  result := Self;
-end;
-
-procedure TpageUsuarios.UnRender;
-begin
-  //
-end;
 
 end.

@@ -1,40 +1,5 @@
-object pageUsuarios: TpageUsuarios
-  Left = 0
-  Top = 0
-  BorderStyle = bsNone
+inherited pageUsuarios: TpageUsuarios
   Caption = 'pageUsuarios'
-  ClientHeight = 524
-  ClientWidth = 736
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -29
-  Font.Name = 'Tahoma'
-  Font.Style = []
-  OldCreateOrder = False
   PixelsPerInch = 96
-  TextHeight = 35
-  object Panel1: TPanel
-    Left = 0
-    Top = 0
-    Width = 736
-    Height = 524
-    Align = alClient
-    BevelOuter = bvNone
-    Padding.Top = 35
-    ParentBackground = False
-    TabOrder = 0
-    ExplicitWidth = 720
-    ExplicitHeight = 485
-    object lblTitulo: TLabel
-      Left = 0
-      Top = 35
-      Width = 736
-      Height = 35
-      Align = alTop
-      Alignment = taCenter
-      Caption = 'Usu'#225'rios'
-      ExplicitWidth = 109
-    end
-  end
+  TextHeight = 13
 end
