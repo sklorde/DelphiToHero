@@ -50,6 +50,7 @@ You can [download](https://github.com/sklorde/DelphiToHero/releases/) the latest
 This software uses the following open source packages:
 - [Boss](https://github.com/HashLoad/boss)
 - [Router4Delphi](https://github.com/bittencourtthulio/Router4Delphi)
+- [Bind4D](https://github.com/bittencourtthulio/Bind4D)
 ## License
 
 MIT
