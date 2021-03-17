@@ -24,6 +24,7 @@ const
   FONT_H3 = 18;
   FONT_H4 = 16;
   FONT_H5 = 14;
+  FONT_H55= 12;
   FONT_H6 = 11;
   FONT_H7 = 10;
   FONT_H8 = 8;
