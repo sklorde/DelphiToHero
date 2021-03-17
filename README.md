@@ -3,7 +3,7 @@
   <br>
 </h1>
 
-<h4 align="center">A simple desktop app with MDI.</h4>
+<h4 align="center">A desktop app with MDI and Horse.</h4>
 
 <h5 align="center">Made using MDI (Multiple Document Interface), memory management, and navigation by routes with modern design made only with VCL.</h4>
 
@@ -51,6 +51,7 @@ This software uses the following open source packages:
 - [Boss](https://github.com/HashLoad/boss)
 - [Router4Delphi](https://github.com/bittencourtthulio/Router4Delphi)
 - [Bind4D](https://github.com/bittencourtthulio/Bind4D)
+- [Horse](https://github.com/HashLoad/horse)
 ## License
 
 MIT
