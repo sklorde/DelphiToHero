@@ -13,9 +13,16 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
   DelphiToHero.View.Pages.Form.Template,
-  Vcl.ExtCtrls, Vcl.StdCtrls;
+  Vcl.ExtCtrls,
+  Vcl.StdCtrls,
+  System.ImageList,
+  Vcl.ImgList,
+  Vcl.Buttons,
+  Bind4D;
 
 type
+  [ClassToBind('', 'id', 'Cadastro de Usuários')]
+
   TpageUsuarios = class(TfrmTemplate)
   private
     { Private declarations }

@@ -6,7 +6,8 @@
 	"mainsrc": "./",
 	"projects": [],
 	"dependencies": {
-		"https://github.com/amikey/pngdelphi": ">0.0.0",
-		"https://github.com/bittencourtthulio/router4delphi": "^1.0.1"
+		"https://github.com/bittencourtthulio/bind4d": "^1.0.0",
+		"https://github.com/bittencourtthulio/router4delphi": "^1.0.1",
+		"https://github.com/jacktrapper/pngdelphi": ">0.0.0"
 	}
 }

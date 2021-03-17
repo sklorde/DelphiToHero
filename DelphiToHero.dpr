@@ -13,10 +13,8 @@ uses
 
 begin
   Application.Initialize;
-  ReportMemoryLeaksOnShutdown := DebugHook <> 0;
+  ReportMemoryLeaksOnShutdown := True;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmTemplate, frmTemplate);
-  Application.CreateForm(TpageUsuarios, pageUsuarios);
   Application.Run;
 end.
