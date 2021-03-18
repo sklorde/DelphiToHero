@@ -3,8 +3,20 @@ unit DelphiToHero.View.Main;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Buttons;
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Buttons,
+  System.ImageList,
+  Vcl.ImgList,
+  Vcl.Imaging.pngimage;
 
 type
   TfrmPrincipal = class(TForm)
@@ -14,8 +26,10 @@ type
     pnTop: TPanel;
     pnPrincipal: TPanel;
     pnLogo: TPanel;
-    btnUsuarios: TSpeedButton;
+    ImageList1: TImageList;
     btnPrincipal: TSpeedButton;
+    btnUsuarios: TSpeedButton;
+    imgLogo: TImage;
     procedure FormCreate(Sender: TObject);
     procedure btnPrincipalClick(Sender: TObject);
     procedure btnUsuariosClick(Sender: TObject);

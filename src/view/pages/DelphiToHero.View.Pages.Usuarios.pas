@@ -18,7 +18,10 @@ uses
   System.ImageList,
   Vcl.ImgList,
   Vcl.Buttons,
-  Bind4D, Data.DB, Vcl.Grids, Vcl.DBGrids;
+  Bind4D,
+  Data.DB,
+  Vcl.Grids,
+  Vcl.DBGrids;
 
 type
   [ClassToBind('', 'id', 'Cadastro de Usuários')]
