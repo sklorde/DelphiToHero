@@ -16,7 +16,7 @@ object frmTemplate: TfrmTemplate
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object Panel1: TPanel
+  object pnPrincipal: TPanel
     Left = 0
     Top = 0
     Width = 833
@@ -25,7 +25,7 @@ object frmTemplate: TfrmTemplate
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
-    object Panel2: TPanel
+    object pnTop: TPanel
       Left = 0
       Top = 0
       Width = 833
@@ -36,7 +36,7 @@ object frmTemplate: TfrmTemplate
       Padding.Right = 100
       ParentBackground = False
       TabOrder = 0
-      object Panel4: TPanel
+      object pnTopBody: TPanel
         Left = 100
         Top = 0
         Width = 633
@@ -122,7 +122,7 @@ object frmTemplate: TfrmTemplate
         end
       end
     end
-    object Panel3: TPanel
+    object pnMain: TPanel
       Left = 0
       Top = 73
       Width = 833
@@ -131,7 +131,7 @@ object frmTemplate: TfrmTemplate
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 1
-      object Panel5: TPanel
+      object pnMainBody: TPanel
         Left = 0
         Top = 0
         Width = 833
@@ -142,7 +142,7 @@ object frmTemplate: TfrmTemplate
         Padding.Right = 100
         ParentBackground = False
         TabOrder = 0
-        object Panel6: TPanel
+        object pnMainBodyTop: TPanel
           Left = 100
           Top = 0
           Width = 633
@@ -151,7 +151,7 @@ object frmTemplate: TfrmTemplate
           BevelOuter = bvNone
           ParentBackground = False
           TabOrder = 0
-          object Panel7: TPanel
+          object pnMainBodyTopLine: TPanel
             Left = 0
             Top = 72
             Width = 633
@@ -161,7 +161,7 @@ object frmTemplate: TfrmTemplate
             ParentBackground = False
             TabOrder = 0
           end
-          object Panel8: TPanel
+          object pnMainTopBodyMenu: TPanel
             Left = 0
             Top = 0
             Width = 633
@@ -209,7 +209,7 @@ object frmTemplate: TfrmTemplate
               ParentFont = False
               ExplicitLeft = 120
             end
-            object Panel9: TPanel
+            object pnMainTopBodySearch: TPanel
               Left = 232
               Top = 0
               Width = 401
@@ -232,25 +232,26 @@ object frmTemplate: TfrmTemplate
                 Left = 0
                 Top = 29
                 Width = 401
-                Height = 26
+                Height = 25
                 Align = alTop
                 BorderStyle = bsNone
                 TabOrder = 0
               end
-              object Panel10: TPanel
+              object pnMainTopBodySearchLine: TPanel
                 Left = 0
-                Top = 55
+                Top = 54
                 Width = 401
                 Height = 2
                 Align = alTop
                 BevelOuter = bvNone
                 ParentBackground = False
                 TabOrder = 1
+                ExplicitTop = 55
               end
             end
           end
         end
-        object Panel11: TPanel
+        object pnMainBodyData: TPanel
           Left = 100
           Top = 73
           Width = 633
@@ -260,7 +261,7 @@ object frmTemplate: TfrmTemplate
           Padding.Bottom = 25
           ParentBackground = False
           TabOrder = 1
-          object Panel12: TPanel
+          object pnMainDataForm: TPanel
             Left = 359
             Top = 0
             Width = 274
