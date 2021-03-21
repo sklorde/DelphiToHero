@@ -20,24 +20,16 @@
 		},
 		"https://github.com/bittencourtthulio/bind4d": {
 			"name": "bind4d",
-			"version": "1.0.0",
-			"hash": "969e2db02916476b593903373430e1b8",
+			"version": "1.0.3",
+			"hash": "7a5f691d186b9f232b64b6047afb86ea",
 			"artifacts": {},
 			"failed": false,
 			"changed": false
 		},
 		"https://github.com/bittencourtthulio/router4delphi": {
 			"name": "router4delphi",
-			"version": "1.0.1",
-			"hash": "4c5d2b832b6b2ab4d47a5180ec3002fb",
-			"artifacts": {},
-			"failed": false,
-			"changed": false
-		},
-		"https://github.com/jacktrapper/pngdelphi": {
-			"name": "pngdelphi",
-			"version": "master",
-			"hash": "f06ed3e5e00c630e1c09fc0644c4e74b",
+			"version": "1.0.3",
+			"hash": "3364da831314fe1b4a38cb875dde3374",
 			"artifacts": {},
 			"failed": false,
 			"changed": false
