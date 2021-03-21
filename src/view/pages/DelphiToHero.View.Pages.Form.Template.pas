@@ -25,7 +25,7 @@ uses
   RESTRequest4D,
   DelphiToHero.View.Styles.Colors, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.WinXPanels;
 
 type
   TfrmTemplate = class(TForm, iRouter4DComponent)
@@ -90,12 +90,18 @@ type
     SpeedButton1: TSpeedButton;
 
     [ComponentBindStyle(clBtnFace, FONT_H55, FONT_COLOR4, FONT_NAME)]
-    DBGrid1: TDBGrid;
+    DBGrid: TDBGrid;
 
     ImageList1: TImageList;
     FDMemTable: TFDMemTable;
     DataSource: TDataSource;
+    pnMainCadastroBottom: TPanel;
+    SpeedButton6: TSpeedButton;
+    SpeedButton7: TSpeedButton;
+    SpeedButton8: TSpeedButton;
     procedure FormCreate(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
+    procedure FormResize(Sender: TObject);
   private
     FEndPoint: string;
     FPK: string;
@@ -105,6 +111,8 @@ type
 
     procedure ApplyStyle;
     procedure getEndPoint;
+    procedure alterListForm;
+    procedure formatList;
   public
     function Render: TForm;
     procedure UnRender;
@@ -124,9 +132,9 @@ begin
   lblTitulo.Caption := FTitle;
   pnMainDataForm.Visible := False;
 
-  DBGrid1.TitleFont.Size := FONT_H5;
-  DBGrid1.TitleFont.Name := 'Segoe UI';
-  DBGrid1.TitleFont.Color := FONT_COLOR4;
+  DBGrid.TitleFont.Size := FONT_H5;
+  DBGrid.TitleFont.Name := 'Segoe UI';
+  DBGrid.TitleFont.Color := FONT_COLOR4;
 end;
 
 procedure TfrmTemplate.getEndPoint;
@@ -137,6 +145,8 @@ begin
       .Accept('application/json')
       .DataSetAdapter(FDMemTable)
       .Get;
+
+  formatList;
 end;
 
 procedure TfrmTemplate.FormCreate(Sender: TObject);
@@ -145,8 +155,14 @@ begin
     .New
       .Form(Self)
       .BindFormRest(FEndPoint, FPK, FSort, FOrder)
-      .BindFormDefault(FTitle).SetStyleComponents;
+      .BindFormDefault(FTitle)
+      .SetStyleComponents;
   ApplyStyle;
+  getEndPoint;
+end;
+
+procedure TfrmTemplate.FormResize(Sender: TObject);
+begin
   getEndPoint;
 end;
 
@@ -155,9 +171,25 @@ begin
   result := Self;
 end;
 
+procedure TfrmTemplate.SpeedButton4Click(Sender: TObject);
+begin
+  alterListForm;
+end;
+
 procedure TfrmTemplate.UnRender;
 begin
 
+end;
+
+procedure TfrmTemplate.formatList;
+begin
+  TBind4D.New.Form(self).BindFormatListDataSet(FDMemTable, DBGrid);
+end;
+
+procedure TfrmTemplate.alterListForm;
+begin
+  pnMainDataForm.Visible := not pnMainDataForm.Visible;
+  DBGrid.Visible := not DBGrid.Visible;
 end;
 
 end.
