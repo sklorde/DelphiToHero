@@ -10,10 +10,18 @@
 			"failed": false,
 			"changed": false
 		},
+		"github.com/viniciussanchez/dataset-serialize": {
+			"name": "dataset-serialize",
+			"version": "v2.2.9",
+			"hash": "4141c40e2906a59ed5aacd74bbd5499f",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
 		"https://github.com/bittencourtthulio/bind4d": {
 			"name": "bind4d",
 			"version": "1.0.0",
-			"hash": "0c68bfe94e3ee21f0f638608e98bd7b5",
+			"hash": "969e2db02916476b593903373430e1b8",
 			"artifacts": {},
 			"failed": false,
 			"changed": false
@@ -30,6 +38,14 @@
 			"name": "pngdelphi",
 			"version": "master",
 			"hash": "f06ed3e5e00c630e1c09fc0644c4e74b",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"https://github.com/viniciussanchez/restrequest4delphi": {
+			"name": "restrequest4delphi",
+			"version": "v3.0.5",
+			"hash": "c4ead963093502712c6af02f86b819d0",
 			"artifacts": {},
 			"failed": false,
 			"changed": false

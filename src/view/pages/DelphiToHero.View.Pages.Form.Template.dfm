@@ -44,13 +44,13 @@ object frmTemplate: TfrmTemplate
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
-        object Label1: TLabel
+        object lblTitulo: TLabel
           Left = 0
           Top = 0
-          Width = 37
+          Width = 45
           Height = 73
           Align = alLeft
-          Caption = 'Label1'
+          Caption = 'lblTitulo'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -219,7 +219,7 @@ object frmTemplate: TfrmTemplate
               Padding.Top = 16
               ParentBackground = False
               TabOrder = 0
-              object Label2: TLabel
+              object lblPesquisar: TLabel
                 Left = 0
                 Top = 16
                 Width = 401
@@ -228,7 +228,7 @@ object frmTemplate: TfrmTemplate
                 Caption = 'Pesquisar'
                 ExplicitWidth = 46
               end
-              object Edit1: TEdit
+              object edtPesquisa: TEdit
                 Left = 0
                 Top = 29
                 Width = 401
@@ -246,7 +246,6 @@ object frmTemplate: TfrmTemplate
                 BevelOuter = bvNone
                 ParentBackground = False
                 TabOrder = 1
-                ExplicitTop = 55
               end
             end
           end
@@ -278,6 +277,7 @@ object frmTemplate: TfrmTemplate
             Height = 377
             Align = alClient
             BorderStyle = bsNone
+            DataSource = DataSource
             Options = [dgTitles, dgIndicator, dgColumnResize, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
             TabOrder = 1
             TitleFont.Charset = DEFAULT_CHARSET
@@ -1359,5 +1359,21 @@ object frmTemplate: TfrmTemplate
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000}
+  end
+  object FDMemTable: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 611
+    Top = 258
+  end
+  object DataSource: TDataSource
+    DataSet = FDMemTable
+    Left = 547
+    Top = 186
   end
 end

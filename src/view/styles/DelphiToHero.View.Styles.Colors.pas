@@ -30,6 +30,8 @@ const
   FONT_H8 = 8;
   FONT_H9 = 6;
 
+  FONT_NAME = 'Segoe UI';
+
 
 implementation
 

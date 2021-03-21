@@ -22,64 +22,89 @@ uses
   Data.DB,
   Vcl.Grids,
   Vcl.DBGrids,
-  DelphiToHero.View.Styles.Colors;
+  RESTRequest4D,
+  DelphiToHero.View.Styles.Colors, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TfrmTemplate = class(TForm, iRouter4DComponent)
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME, teCell)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnPrincipal: TPanel;
 
-    [ComponentBindStyle(COLOR_C1, FONT_H5, FONT_COLOR3, FONT_NAME, teCell)]
+    [ComponentBindStyle(COLOR_C1, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnTop: TPanel;
 
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME, teCell)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnMain: TPanel;
 
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME, teCell)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnMainBody: TPanel;
 
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME, teCell)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnMainBodyData: TPanel;
 
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME, teCell)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnMainTopBodyMenu: TPanel;
 
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME, teCell)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnMainBodyTop: TPanel;
 
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME, teCell)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnMainDataForm: TPanel;
 
-    [ComponentBindStyle(COLOR_C2, FONT_H5, FONT_COLOR3, FONT_NAME, teCell)]
+    [ComponentBindStyle(COLOR_C2, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnMainBodyTopLine: TPanel;
 
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME, teCell)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnMainTopBodySearch: TPanel;
 
-    [ComponentBindStyle(COLOR_C2, FONT_H5, FONT_COLOR3, FONT_NAME, teCell)]
+    [ComponentBindStyle(COLOR_BACKGROUND_TOP, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnMainTopBodySearchLine: TPanel;
 
-    [ComponentBindStyle(COLOR_C1, FONT_H5, FONT_COLOR3, FONT_NAME, teCell)]
+    [ComponentBindStyle(COLOR_C1, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnTopBody: TPanel;
 
-    Label1: TLabel;
-    SpeedButton1: TSpeedButton;
-    ImageList1: TImageList;
-    SpeedButton2: TSpeedButton;
-    SpeedButton3: TSpeedButton;
-    SpeedButton4: TSpeedButton;
-    SpeedButton5: TSpeedButton;
-    Label2: TLabel;
-    Edit1: TEdit;
+    [ComponentBindStyle(COLOR_BACKGROUND_TOP, FONT_H6, FONT_COLOR3, FONT_NAME)]
+    lblPesquisar: TLabel;
 
+    [ComponentBindStyle(COLOR_BACKGROUND_TOP, FONT_H5, FONT_COLOR3, FONT_NAME)]
+    lblTitulo: TLabel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_H55, COLOR_BACKGROUND_TOP, FONT_NAME)]
+    edtPesquisa: TEdit;
+
+    [ComponentBindStyle(clBtnFace, FONT_H8, FONT_COLOR3, FONT_NAME)]
+    SpeedButton2: TSpeedButton;
+
+    [ComponentBindStyle(clBtnFace, FONT_H8, FONT_COLOR3, FONT_NAME)]
+    SpeedButton3: TSpeedButton;
+
+    [ComponentBindStyle(clBtnFace, FONT_H8, FONT_COLOR3, FONT_NAME)]
+    SpeedButton4: TSpeedButton;
+
+    [ComponentBindStyle(clBtnFace, FONT_H8, FONT_COLOR3, FONT_NAME)]
+    SpeedButton5: TSpeedButton;
+
+    [ComponentBindStyle(clBtnFace, FONT_H8, FONT_COLOR3, FONT_NAME)]
+    SpeedButton1: TSpeedButton;
+
+    [ComponentBindStyle(clBtnFace, FONT_H55, FONT_COLOR4, FONT_NAME)]
     DBGrid1: TDBGrid;
+
+    ImageList1: TImageList;
+    FDMemTable: TFDMemTable;
+    DataSource: TDataSource;
     procedure FormCreate(Sender: TObject);
   private
     FEndPoint: string;
     FPK: string;
+    FSort: string;
     FTitle: string;
+    FOrder: string;
 
     procedure ApplyStyle;
+    procedure getEndPoint;
   public
     function Render: TForm;
     procedure UnRender;
@@ -96,33 +121,33 @@ implementation
 
 procedure TfrmTemplate.ApplyStyle;
 begin
-  Label1.Caption := FTitle;
+  lblTitulo.Caption := FTitle;
   pnMainDataForm.Visible := False;
 
-  Label1.Font.Size  := FONT_H5;
-  Label1.Font.Color := FONT_COLOR3;
-  Label1.Font.Name  := 'Segoe UI';
-
-  Label2.Font.Size  := FONT_H6;
-  Label2.Font.Color := COLOR_BACKGROUND_TOP;
-  Label2.Font.Name  := 'Segoe UI';
-
-  Edit1.Font.Size   := FONT_H55;
-  Edit1.Font.Color  := COLOR_BACKGROUND_TOP;
-  Edit1.Color       := COLOR_BACKGROUND;
-
-  DBGrid1.Font.Size := FONT_H5;
-  DBGrid1.Font.Color := FONT_COLOR4;
-  DBGrid1.Font.Name := 'Segoe UI';
   DBGrid1.TitleFont.Size := FONT_H5;
   DBGrid1.TitleFont.Name := 'Segoe UI';
   DBGrid1.TitleFont.Color := FONT_COLOR4;
 end;
 
+procedure TfrmTemplate.getEndPoint;
+begin
+  TRequest
+    .New
+      .BaseURL('http://localhost:9000' + FEndPoint)
+      .Accept('application/json')
+      .DataSetAdapter(FDMemTable)
+      .Get;
+end;
+
 procedure TfrmTemplate.FormCreate(Sender: TObject);
 begin
-  TBindFormJson.New.BindClassToForm(Self, FEndPoint, FPK, FTitle);
+  TBind4D
+    .New
+      .Form(Self)
+      .BindFormRest(FEndPoint, FPK, FSort, FOrder)
+      .BindFormDefault(FTitle).SetStyleComponents;
   ApplyStyle;
+  getEndPoint;
 end;
 
 function TfrmTemplate.Render: TForm;

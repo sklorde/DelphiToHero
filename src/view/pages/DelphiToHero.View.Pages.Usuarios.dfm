@@ -3,10 +3,18 @@ inherited pageUsuarios: TpageUsuarios
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnPrincipal: TPanel
-    inherited Panel3: TPanel
-      inherited Panel5: TPanel
-        inherited Panel11: TPanel
-          inherited Panel12: TPanel
+    inherited pnMain: TPanel
+      inherited pnMainBody: TPanel
+        inherited pnMainBodyTop: TPanel
+          inherited pnMainBodyTopLine: TPanel
+            TabOrder = 1
+          end
+          inherited pnMainTopBodyMenu: TPanel
+            TabOrder = 0
+          end
+        end
+        inherited pnMainBodyData: TPanel
+          inherited pnMainDataForm: TPanel
             Left = 376
             Width = 257
             ExplicitLeft = 376

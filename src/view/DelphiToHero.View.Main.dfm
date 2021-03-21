@@ -237,6 +237,8 @@ object frmPrincipal: TfrmPrincipal
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 0
+        ExplicitLeft = 32
+        ExplicitTop = -6
       end
       object pnPrincipal: TPanel
         Left = 0
@@ -247,8 +249,6 @@ object frmPrincipal: TfrmPrincipal
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 1
-        ExplicitLeft = 6
-        ExplicitTop = 106
       end
     end
   end
