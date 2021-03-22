@@ -143,8 +143,6 @@ object frmTemplate: TfrmTemplate
         Padding.Right = 100
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 88
-        ExplicitTop = 6
         object pnMainBodyTop: TPanel
           Left = 100
           Top = 0
@@ -192,6 +190,8 @@ object frmTemplate: TfrmTemplate
               Layout = blGlyphTop
               ParentFont = False
               OnClick = SpeedButton4Click
+              ExplicitLeft = -6
+              ExplicitTop = -5
             end
             object SpeedButton5: TSpeedButton
               Left = 100
@@ -264,10 +264,27 @@ object frmTemplate: TfrmTemplate
           Padding.Bottom = 25
           ParentBackground = False
           TabOrder = 1
-          object pnMainDataForm: TPanel
-            Left = 128
+          object DBGrid: TDBGrid
+            Left = 0
             Top = 0
-            Width = 569
+            Width = 296
+            Height = 377
+            Align = alClient
+            BorderStyle = bsNone
+            DataSource = DataSource
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+            TabOrder = 1
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = []
+            OnDblClick = DBGridDblClick
+          end
+          object pnMainDataForm: TPanel
+            Left = 296
+            Top = 0
+            Width = 401
             Height = 377
             Align = alRight
             BevelOuter = bvNone
@@ -276,15 +293,12 @@ object frmTemplate: TfrmTemplate
             object pnMainCadastroBottom: TPanel
               Left = 0
               Top = 312
-              Width = 569
+              Width = 401
               Height = 65
               Align = alBottom
               BevelOuter = bvNone
               ParentBackground = False
               TabOrder = 0
-              ExplicitLeft = 17
-              ExplicitTop = 248
-              ExplicitWidth = 399
               object SpeedButton6: TSpeedButton
                 Left = 0
                 Top = 0
@@ -307,7 +321,7 @@ object frmTemplate: TfrmTemplate
                 ExplicitLeft = 8
               end
               object SpeedButton7: TSpeedButton
-                Left = 289
+                Left = 121
                 Top = 0
                 Width = 140
                 Height = 65
@@ -324,11 +338,11 @@ object frmTemplate: TfrmTemplate
                 Font.Style = [fsBold]
                 Layout = blGlyphTop
                 ParentFont = False
-                ExplicitLeft = 562
-                ExplicitHeight = 73
+                OnClick = SpeedButton7Click
+                ExplicitLeft = 115
               end
               object SpeedButton8: TSpeedButton
-                Left = 429
+                Left = 261
                 Top = 0
                 Width = 140
                 Height = 65
@@ -345,26 +359,11 @@ object frmTemplate: TfrmTemplate
                 Font.Style = [fsBold]
                 Layout = blGlyphTop
                 ParentFont = False
+                OnClick = SpeedButton8Click
                 ExplicitLeft = 562
                 ExplicitHeight = 73
               end
             end
-          end
-          object DBGrid: TDBGrid
-            Left = 0
-            Top = 0
-            Width = 128
-            Height = 377
-            Align = alClient
-            BorderStyle = bsNone
-            DataSource = DataSource
-            Options = [dgTitles, dgIndicator, dgColumnResize, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-            TabOrder = 1
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -11
-            TitleFont.Name = 'Tahoma'
-            TitleFont.Style = []
           end
         end
       end

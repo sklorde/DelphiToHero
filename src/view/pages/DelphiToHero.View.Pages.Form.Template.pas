@@ -25,7 +25,8 @@ uses
   RESTRequest4D,
   DelphiToHero.View.Styles.Colors, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.WinXPanels;
+  FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.WinXPanels,
+  System.JSON;
 
 type
   TfrmTemplate = class(TForm, iRouter4DComponent)
@@ -102,6 +103,9 @@ type
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure FormResize(Sender: TObject);
+    procedure DBGridDblClick(Sender: TObject);
+    procedure SpeedButton8Click(Sender: TObject);
+    procedure SpeedButton7Click(Sender: TObject);
   private
     FEndPoint: string;
     FPK: string;
@@ -129,12 +133,19 @@ implementation
 
 procedure TfrmTemplate.ApplyStyle;
 begin
-  lblTitulo.Caption := FTitle;
+  lblTitulo.Caption      := FTitle;
   pnMainDataForm.Visible := False;
+  pnMainDataForm.Align   := TAlign.alClient;
 
   DBGrid.TitleFont.Size := FONT_H5;
   DBGrid.TitleFont.Name := 'Segoe UI';
   DBGrid.TitleFont.Color := FONT_COLOR4;
+end;
+
+procedure TfrmTemplate.DBGridDblClick(Sender: TObject);
+begin
+  TBind4D.New.Form(Self).BindDataSetToForm(FDMemTable);
+  alterListForm;
 end;
 
 procedure TfrmTemplate.getEndPoint;
@@ -172,6 +183,33 @@ begin
 end;
 
 procedure TfrmTemplate.SpeedButton4Click(Sender: TObject);
+begin
+  alterListForm;
+  TBind4D.New.Form(Self).ClearFieldForm;
+end;
+
+procedure TfrmTemplate.SpeedButton7Click(Sender: TObject);
+var
+  aJson: TJSONObject;
+  aTest: string;
+begin
+  aJson := TBind4D.New.Form(Self).FormToJson(fbPost);
+  try
+    TRequest
+    .New
+      .BaseURL('http://localhost:9000' + FEndPoint)
+      .Accept('application/json')
+      .AddBody(aJson.ToString)
+      .Post;
+  finally
+    aJson.Free;
+  end;
+
+  alterListForm;
+  getEndPoint;
+end;
+
+procedure TfrmTemplate.SpeedButton8Click(Sender: TObject);
 begin
   alterListForm;
 end;
