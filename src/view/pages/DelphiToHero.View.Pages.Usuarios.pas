@@ -42,14 +42,15 @@ type
 
     [ComponentBindStyle(clBtnFace, FONT_H55, FONT_COLOR3, FONT_NAME)]
 
-    [FieldJsonBind('id'), FbIgnorePost, FbIgnorePut]
+    [FieldJsonBind('id')]
     [FieldDataSetBind('id', ftString, False, 0, 'Código')]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_H55, FONT_COLOR3, FONT_NAME)]
+    edtCodigo: TEdit;
 
     [ComponentBindStyle(clBtnFace, FONT_H55, FONT_COLOR3, FONT_NAME)]
     lblNome: TLabel;
 
-    [FieldJsonBind('nome')]
+    [FieldJsonBind('nome'), FbIgnoreDelete]
     [FieldDataSetBind('nome', ftString, True, 20, 'Nome')]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_H55, FONT_COLOR3, FONT_NAME)]
     edtNome: TEdit;
@@ -57,15 +58,15 @@ type
     [ComponentBindStyle(clBtnFace, FONT_H55, FONT_COLOR3, FONT_NAME)]
     lblTelefone: TLabel;
 
-    [FieldJsonBind('telefone')]
-    [FieldDataSetBind('telefone', ftString, True, 20, 'Telefone', '!\(##\) #####-####;0;')]
+    [FieldJsonBind('telefone'), FbIgnoreDelete]
+    [FieldDataSetBind('telefone', ftString, True, 20, 'Telefone', '!\(##\) #####-####;0;_')]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_H55, FONT_COLOR3, FONT_NAME, teCell)]
     edtTelefone: TEdit;
 
     [ComponentBindStyle(clBtnFace, FONT_H55, FONT_COLOR3, FONT_NAME)]
     lblEmail: TLabel;
 
-    [FieldJsonBind('email')]
+    [FieldJsonBind('email'), FbIgnoreDelete]
     [FieldDataSetBind('email', ftString, True, 20, 'E-mail')]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_H55, FONT_COLOR3, FONT_NAME)]
     edtEmail: TEdit;
@@ -73,10 +74,13 @@ type
     [ComponentBindStyle(clBtnFace, FONT_H55, FONT_COLOR3, FONT_NAME)]
     lblCPF: TLabel;
 
-    [FieldJsonBind('cpf')]
+    [FieldJsonBind('cpf'), FbIgnoreDelete]
     [FieldDataSetBind('cpf', ftString, True, 20,'CPF', '###.###.###-##;0;_', taLeftJustify)]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_H55, FONT_COLOR3, FONT_NAME, teCPF)]
     edtCPF: TEdit;
+
+    [ComponentBindStyle(clBtnFace, FONT_H55, FONT_COLOR3, FONT_NAME)]
+    lblID: TLabel;
   private
     { Private declarations }
   public

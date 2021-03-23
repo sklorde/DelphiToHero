@@ -317,7 +317,7 @@ object frmTemplate: TfrmTemplate
                 Font.Style = [fsBold]
                 Layout = blGlyphTop
                 ParentFont = False
-                OnClick = SpeedButton4Click
+                OnClick = SpeedButton6Click
                 ExplicitLeft = 8
               end
               object SpeedButton7: TSpeedButton

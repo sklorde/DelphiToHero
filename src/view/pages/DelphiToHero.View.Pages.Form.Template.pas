@@ -101,11 +101,12 @@ type
     SpeedButton7: TSpeedButton;
     SpeedButton8: TSpeedButton;
     procedure FormCreate(Sender: TObject);
-    procedure SpeedButton4Click(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure DBGridDblClick(Sender: TObject);
     procedure SpeedButton8Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
+    procedure SpeedButton6Click(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
   private
     FEndPoint: string;
     FPK: string;
@@ -184,14 +185,33 @@ end;
 
 procedure TfrmTemplate.SpeedButton4Click(Sender: TObject);
 begin
-  alterListForm;
   TBind4D.New.Form(Self).ClearFieldForm;
+  alterListForm;
+end;
+
+procedure TfrmTemplate.SpeedButton6Click(Sender: TObject);
+var
+  aJson: TJSONObject;
+begin
+  aJson := TBind4D.New.Form(Self).FormToJson(fbDelete);
+
+  try
+    TRequest
+    .New
+      .BaseURL('http://localhost:9000' + FEndPoint)
+      .Accept('application/json')
+      .Delete;
+  finally
+    aJson.Free;
+  end;
+
+  alterListForm;
+  getEndPoint;
 end;
 
 procedure TfrmTemplate.SpeedButton7Click(Sender: TObject);
 var
   aJson: TJSONObject;
-  aTest: string;
 begin
   aJson := TBind4D.New.Form(Self).FormToJson(fbPost);
   try

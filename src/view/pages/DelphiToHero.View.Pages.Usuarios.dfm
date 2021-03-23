@@ -1,7 +1,6 @@
 inherited pageUsuarios: TpageUsuarios
   Caption = 'pageUsuarios'
   ClientWidth = 1072
-  ExplicitTop = -125
   ExplicitWidth = 1072
   PixelsPerInch = 96
   TextHeight = 13
@@ -89,6 +88,12 @@ inherited pageUsuarios: TpageUsuarios
               BevelOuter = bvNone
               ControlCollection = <
                 item
+                  Control = lblID
+                end
+                item
+                  Control = edtCodigo
+                end
+                item
                   Control = lblNome
                 end
                 item
@@ -115,58 +120,72 @@ inherited pageUsuarios: TpageUsuarios
               HorizontalPositioning = sphpFill
               Spacing = 4
               TabOrder = 1
-              object lblNome: TLabel
+              object lblID: TLabel
                 Left = 0
                 Top = 0
+                Width = 297
+                Height = 13
+                Caption = 'C'#243'digo'
+              end
+              object edtCodigo: TEdit
+                Left = 0
+                Top = 17
+                Width = 297
+                Height = 21
+                TabOrder = 4
+              end
+              object lblNome: TLabel
+                Left = 0
+                Top = 42
                 Width = 297
                 Height = 13
                 Caption = 'Nome'
               end
               object edtNome: TEdit
                 Left = 0
-                Top = 17
+                Top = 59
                 Width = 297
                 Height = 21
                 TabOrder = 0
               end
               object lblCPF: TLabel
                 Left = 0
-                Top = 42
+                Top = 84
                 Width = 297
                 Height = 13
                 Caption = 'CPF'
               end
               object edtCPF: TEdit
                 Left = 0
-                Top = 59
+                Top = 101
                 Width = 297
                 Height = 21
                 TabOrder = 1
               end
               object lblTelefone: TLabel
                 Left = 0
-                Top = 84
+                Top = 126
                 Width = 297
                 Height = 13
                 Caption = 'Telefone'
               end
               object edtTelefone: TEdit
                 Left = 0
-                Top = 101
+                Top = 143
                 Width = 297
                 Height = 21
                 TabOrder = 2
               end
               object lblEmail: TLabel
                 Left = 0
-                Top = 126
+                Top = 168
                 Width = 297
                 Height = 13
                 Caption = 'E-mail'
               end
               object edtEmail: TEdit
                 Left = 0
-                Top = 143
+                Top = 185
                 Width = 297
                 Height = 21
                 TabOrder = 3
