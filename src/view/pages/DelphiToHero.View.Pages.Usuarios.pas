@@ -42,7 +42,7 @@ type
 
     [ComponentBindStyle(clBtnFace, FONT_H55, FONT_COLOR3, FONT_NAME)]
 
-    [FieldJsonBind('id')]
+    [FieldJsonBind('id'), FbIgnorePost]
     [FieldDataSetBind('id', ftString, False, 0, 'Código')]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_H55, FONT_COLOR3, FONT_NAME)]
     edtCodigo: TEdit;
