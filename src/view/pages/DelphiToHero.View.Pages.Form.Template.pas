@@ -186,23 +186,10 @@ begin
 end;
 
 procedure TfrmTemplate.SpeedButton6Click(Sender: TObject);
-var
-  aJson: TJSONObject;
 begin
-  aJson := TBind4D.New.Form(Self).FormToJson(fbDelete);
-
-  try
-    TRequest
-    .New
-      .BaseURL('http://localhost:9000' + FEndPoint)
-      .Accept('application/json')
-      .Delete;
-  finally
-    aJson.Free;
-  end;
-
-  alterListForm;
+  FDAO.Delete;
   getEndPoint;
+  alterListForm;
 end;
 
 procedure TfrmTemplate.SpeedButton7Click(Sender: TObject);
