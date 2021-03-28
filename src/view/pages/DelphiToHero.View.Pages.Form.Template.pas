@@ -25,7 +25,9 @@ uses
   RESTRequest4D,
   DelphiToHero.View.Styles.Colors,
   Vcl.WinXPanels,
-  System.JSON, DelphiToHero.Model.DAO.Interfaces, DelphiToHero.Model.DAO.REST;
+  System.JSON,
+  DelphiToHero.Model.DAO.Interfaces,
+  DelphiToHero.Model.DAO.REST;
 
 type
   TfrmTemplate = class(TForm, iRouter4DComponent)
@@ -93,7 +95,6 @@ type
     DBGrid: TDBGrid;
 
     ImageList1: TImageList;
-    DataSource: TDataSource;
     pnMainCadastroBottom: TPanel;
     SpeedButton6: TSpeedButton;
     SpeedButton7: TSpeedButton;
@@ -107,6 +108,7 @@ type
     procedure SpeedButton4Click(Sender: TObject);
   private
     FDAO : iDAOInterface;
+    DataSource: TDataSource;
     FEndPoint: string;
     FPK: string;
     FSort: string;
@@ -156,6 +158,8 @@ end;
 
 procedure TfrmTemplate.FormCreate(Sender: TObject);
 begin
+  DataSource := TDataSource.Create(Self);
+  DBGrid.DataSource := DataSource;
   FDAO := TDAORest.New(Self).DataSource(DataSource);
 
   TBind4D

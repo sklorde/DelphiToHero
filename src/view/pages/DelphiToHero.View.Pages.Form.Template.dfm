@@ -272,7 +272,6 @@ object frmTemplate: TfrmTemplate
             Height = 377
             Align = alClient
             BorderStyle = bsNone
-            DataSource = DataSource
             Options = [dgTitles, dgIndicator, dgColumnResize, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
             TabOrder = 1
             TitleFont.Charset = DEFAULT_CHARSET
@@ -1967,9 +1966,5 @@ object frmTemplate: TfrmTemplate
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000}
-  end
-  object DataSource: TDataSource
-    Left = 323
-    Top = 42
   end
 end
