@@ -80,7 +80,7 @@ begin
       .BaseURL(FBaseURL + FEndPoint)
       .Accept('application/json')
       .DataSetAdapter(FDMemTable)
-      .Post;
+    .Get;
 end;
 
 function TDAORest.Post: iDAOInterface;
