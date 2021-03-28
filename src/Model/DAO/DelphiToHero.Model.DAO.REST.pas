@@ -15,6 +15,7 @@ uses
   FireDAC.Comp.Client,
   Vcl.Forms,
   RESTRequest4D,
+  Bind4D,
   DelphiToHero.Model.DAO.Interfaces;
 
 type
@@ -23,6 +24,7 @@ type
       FDMemTable : TFDMemTable;
       FBaseURL : string;
       FForm : TForm;
+      FEndPoint, FPK, FOrder, FSort: string;
     public
       Constructor Create(aForm: TForm);
       Destructor Destroy; override;
@@ -43,6 +45,11 @@ begin
   FDMemTable := TFDMemTable.Create(nil);
   FBaseURL   := 'http://localhost:9000';
   FForm      := aForm;
+
+  TBind4D
+    .New
+    .Form(FForm)
+    .BindFormRest(FEndPoint, FPK, FSort, FOrder);
 end;
 
 destructor TDAORest.Destroy;
