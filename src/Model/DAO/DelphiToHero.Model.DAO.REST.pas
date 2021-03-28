@@ -25,6 +25,8 @@ type
       FBaseURL : string;
       FForm : TForm;
       FEndPoint, FPK, FOrder, FSort: string;
+
+      function prepareID: string;
     public
       Constructor Create(aForm: TForm);
       Destructor Destroy; override;
@@ -62,6 +64,11 @@ begin
   result := FDMemTable;
 end;
 
+function TDAORest.prepareID: string;
+begin
+  result := FDMemTable.FieldByName(FPK).AsString;
+end;
+
 function TDAORest.DataSource(aValue: TDataSource): iDAOInterface;
 begin
   result := Self;
@@ -70,7 +77,13 @@ end;
 
 function TDAORest.Delete: iDAOInterface;
 begin
+  result := Self;
 
+  TRequest
+    .New
+      .BaseURL(FBaseURL + FEndPoint + '/' + prepareID)
+      .Accept('application/json')
+    .Delete;
 end;
 
 function TDAORest.Get: iDAOInterface;
