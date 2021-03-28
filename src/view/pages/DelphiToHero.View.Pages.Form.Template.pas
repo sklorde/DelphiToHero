@@ -25,9 +25,7 @@ uses
   RESTRequest4D,
   DelphiToHero.View.Styles.Colors,
   Vcl.WinXPanels,
-  System.JSON, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
-  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  System.JSON, DelphiToHero.Model.DAO.Interfaces, DelphiToHero.Model.DAO.REST;
 
 type
   TfrmTemplate = class(TForm, iRouter4DComponent)
@@ -95,7 +93,6 @@ type
     DBGrid: TDBGrid;
 
     ImageList1: TImageList;
-    FDMemTable: TFDMemTable;
     DataSource: TDataSource;
     pnMainCadastroBottom: TPanel;
     SpeedButton6: TSpeedButton;
@@ -109,6 +106,7 @@ type
     procedure SpeedButton6Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
   private
+    FDAO : iDAOInterface;
     FEndPoint: string;
     FPK: string;
     FSort: string;
@@ -146,30 +144,27 @@ end;
 
 procedure TfrmTemplate.DBGridDblClick(Sender: TObject);
 begin
-  TBind4D.New.Form(Self).BindDataSetToForm(FDMemTable);
+  TBind4D.New.Form(Self).BindDataSetToForm(FDAO.Dataset);
   alterListForm;
 end;
 
 procedure TfrmTemplate.getEndPoint;
 begin
-  TRequest
-    .New
-      .BaseURL('http://localhost:9000' + FEndPoint)
-      .Accept('application/json')
-      .DataSetAdapter(FDMemTable)
-      .Get;
-
+  FDAO.Get;
   formatList;
 end;
 
 procedure TfrmTemplate.FormCreate(Sender: TObject);
 begin
+  FDAO := TDAORest.New(Self).DataSource(DataSource);
+
   TBind4D
     .New
       .Form(Self)
-      .BindFormRest(FEndPoint, FPK, FSort, FOrder)
       .BindFormDefault(FTitle)
+      .BindFormRest(FEndPoint, FPK, FSort, FOrder)
       .SetStyleComponents;
+
   ApplyStyle;
   getEndPoint;
 end;
@@ -242,7 +237,7 @@ end;
 
 procedure TfrmTemplate.formatList;
 begin
-  TBind4D.New.Form(self).BindFormatListDataSet(FDMemTable, DBGrid);
+  TBind4D.New.Form(self).BindFormatListDataSet(FDAO.Dataset, DBGrid);
 end;
 
 procedure TfrmTemplate.alterListForm;

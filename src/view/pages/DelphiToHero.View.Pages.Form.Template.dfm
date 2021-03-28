@@ -37,6 +37,7 @@ object frmTemplate: TfrmTemplate
       Padding.Right = 100
       ParentBackground = False
       TabOrder = 0
+      ExplicitTop = -6
       object pnTopBody: TPanel
         Left = 100
         Top = 0
@@ -1967,19 +1968,7 @@ object frmTemplate: TfrmTemplate
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000}
   end
-  object FDMemTable: TFDMemTable
-    FetchOptions.AssignedValues = [evMode]
-    FetchOptions.Mode = fmAll
-    ResourceOptions.AssignedValues = [rvSilentMode]
-    ResourceOptions.SilentMode = True
-    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
-    UpdateOptions.CheckRequired = False
-    UpdateOptions.AutoCommitUpdates = True
-    Left = 251
-    Top = 42
-  end
   object DataSource: TDataSource
-    DataSet = FDMemTable
     Left = 323
     Top = 42
   end
