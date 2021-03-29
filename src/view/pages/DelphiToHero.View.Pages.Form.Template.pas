@@ -30,6 +30,8 @@ uses
   DelphiToHero.Model.DAO.REST;
 
 type
+  TTypeOperation = (toNull, toPost, toPut);
+
   TfrmTemplate = class(TForm, iRouter4DComponent)
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_H5, FONT_COLOR3, FONT_NAME)]
     pnPrincipal: TPanel;
@@ -114,11 +116,14 @@ type
     FSort: string;
     FTitle: string;
     FOrder: string;
+    FTypeOperation: TTypeOperation;
 
     procedure ApplyStyle;
     procedure getEndPoint;
     procedure alterListForm;
     procedure formatList;
+    procedure restOperationPost;
+    procedure restOperationPut;
   public
     function Render: TForm;
     procedure UnRender;
@@ -146,6 +151,7 @@ end;
 
 procedure TfrmTemplate.DBGridDblClick(Sender: TObject);
 begin
+  FTypeOperation := toPut;
   TBind4D.New.Form(Self).BindDataSetToForm(FDAO.Dataset);
   alterListForm;
 end;
@@ -158,6 +164,8 @@ end;
 
 procedure TfrmTemplate.FormCreate(Sender: TObject);
 begin
+  FTypeOperation := toNull;
+
   DataSource := TDataSource.Create(Self);
   DBGrid.DataSource := DataSource;
   FDAO := TDAORest.New(Self).DataSource(DataSource);
@@ -185,6 +193,7 @@ end;
 
 procedure TfrmTemplate.SpeedButton4Click(Sender: TObject);
 begin
+  FTypeOperation := toPost;
   TBind4D.New.Form(Self).ClearFieldForm;
   alterListForm;
 end;
@@ -194,31 +203,39 @@ begin
   FDAO.Delete;
   getEndPoint;
   alterListForm;
+  FTypeOperation := toNull;
 end;
 
 procedure TfrmTemplate.SpeedButton7Click(Sender: TObject);
-var
-  aJson: TJSONObject;
 begin
-  aJson := TBind4D.New.Form(Self).FormToJson(fbPost);
-  try
-    TRequest
-    .New
-      .BaseURL('http://localhost:9000' + FEndPoint)
-      .Accept('application/json')
-      .AddBody(aJson.ToString)
-      .Post;
-  finally
-    aJson.Free;
+  case FTypeOperation of
+    toPost : restOperationPost;
+    toPut  : restOperationPut;
   end;
+end;
 
-  alterListForm;
+procedure TfrmTemplate.restOperationPost;
+begin
+  FDAO.Post;
   getEndPoint;
+  alterListForm;
+
+  FTypeOperation := toNull;
+end;
+
+procedure TfrmTemplate.restOperationPut;
+begin
+  FDAO.Put;
+  getEndPoint;
+  alterListForm;
+
+  FTypeOperation := toNull;
 end;
 
 procedure TfrmTemplate.SpeedButton8Click(Sender: TObject);
 begin
   alterListForm;
+  FTypeOperation := toNull;
 end;
 
 procedure TfrmTemplate.UnRender;
