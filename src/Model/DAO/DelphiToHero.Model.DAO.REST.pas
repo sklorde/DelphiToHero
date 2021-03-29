@@ -115,8 +115,21 @@ begin
 end;
 
 function TDAORest.Put: iDAOInterface;
+var
+  aJson : TJSONObject;
 begin
-
+  result := Self;
+  aJson := TBind4D.New.Form(FForm).FormToJson(fbPost);
+  try
+    TRequest
+      .New
+        .BaseURL(FBaseURL + FEndPoint + '/' + prepareID)
+        .Accept('application/json')
+        .AddBody(aJson.ToString)
+      .Put;
+  finally
+    aJson.Free;
+  end;
 end;
 
 class function TDAORest.New(aForm: TForm) : iDAOInterface;
