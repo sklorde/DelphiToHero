@@ -16,7 +16,7 @@ uses
   Vcl.Forms,
   RESTRequest4D,
   Bind4D,
-  DelphiToHero.Model.DAO.Interfaces;
+  DelphiToHero.Model.DAO.Interfaces, System.JSON;
 
 type
   TDAORest = class(TInterfacedObject, iDAOInterface)
@@ -97,8 +97,21 @@ begin
 end;
 
 function TDAORest.Post: iDAOInterface;
+var
+  aJson : TJsonObject;
 begin
-
+  result := Self;
+  aJson := TBind4D.New.Form(FForm).FormToJson(fbPost);
+  try
+    TRequest
+      .New
+        .BaseURL(FBaseURL + FEndPoint)
+        .Accept('application/json')
+        .AddBody(aJson.ToString)
+      .Post;
+  finally
+    aJson.Free;
+  end;
 end;
 
 function TDAORest.Put: iDAOInterface;
