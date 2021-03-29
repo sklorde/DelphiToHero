@@ -119,7 +119,7 @@ var
   aJson : TJSONObject;
 begin
   result := Self;
-  aJson := TBind4D.New.Form(FForm).FormToJson(fbPost);
+  aJson := TBind4D.New.Form(FForm).FormToJson(fbPut);
   try
     TRequest
       .New
