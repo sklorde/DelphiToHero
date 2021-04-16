@@ -44,7 +44,7 @@ $ boss install
 ```
 
 ## Download
-You can [download](https://github.com/sklorde/DelphiToHero/releases/) the latest executable version of DelphiToHero for Windows.
+You can [download](https://github.com/sklorde/DelphiToHero/releases/) the latest executable version of DelphiToHero for Windows. (not yet)
 
 ## Credits
 This software uses the following open source packages:
